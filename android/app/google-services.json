@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1012305295180",
+    "project_id": "uglian-5caf0",
+    "storage_bucket": "uglian-5caf0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012305295180:android:0c8a64dfc75926b5e801e9",
+        "android_client_info": {
+          "package_name": "com.example.uglian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2ma0jQF_4HX51meDQH4rYdBWn7z-YUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
