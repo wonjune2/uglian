@@ -1,10 +1,14 @@
 include: package:flutter_lints/flutter.yaml
-    
+  
+analyzer:
+  plugins:
+    - riverpod_lint
+
+plugins:
+  riverpod_lint: ^3.0.0
+
 linter:
   rules:
     prefer_const_constructors: true
     prefer_const_literals_to_create_immutables: true
 
-analyzer:
-  plugins:
-    - custom_lint  # <--- 이 부분이 반드시 있어야 합니다!

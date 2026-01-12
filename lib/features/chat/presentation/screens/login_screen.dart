@@ -62,7 +62,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Proten 메신저',
+                'QO',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.indigo),
               ),
               const SizedBox(height: 48),
