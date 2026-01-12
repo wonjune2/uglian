@@ -39,38 +39,3 @@ jobs:
         with:
           name: windows-release
           path: uglian_windows.zip
-
-# ---------------------------------------------------
-  # 2. macOS 빌드 작업
-  # ---------------------------------------------------
-  build-macos:
-    if: contains(github.event.head_commit.message, '[BUILD]')
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      # 최신 Flutter 사용
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Enable macOS
-        run: flutter config --enable-macos-desktop
-
-      # [수정됨] --no-codesign 옵션 제거
-      - name: Build macOS
-        run: flutter build macos --release
-
-      - name: Compress macOS App
-        run: |
-          cd build/macos/Build/Products/Release
-          zip -r uglian_macos.zip uglian.app
-
-      - name: Upload macOS Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: macos-release
-          path: build/macos/Build/Products/Release/uglian_macos.zip
