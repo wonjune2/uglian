@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uglian/features/chat/models/chat_message_model.dart';
 import 'package:uglian/features/chat/presentation/widgets/message_bubble.dart';
 import 'package:uglian/features/chat/providers/chat_provider.dart';
+import 'package:uglian/features/chat/repository/auth_repository.dart';
 
 class ChatScreen extends ConsumerWidget {
   const ChatScreen({super.key});
@@ -15,11 +17,23 @@ class ChatScreen extends ConsumerWidget {
 
     final TextEditingController textController = TextEditingController();
 
+    final user = FirebaseAuth.instance.currentUser;
+
+    final String myId = user?.email?.split('@')[0] ?? '알 수 없음';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('팀 채팅방'),
         backgroundColor: Colors.indigo, // 회사 느낌의 차분한 색상
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref.read(authRepositoryProvider).signOut();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -35,7 +49,7 @@ class ChatScreen extends ConsumerWidget {
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     final message = messages[index];
-                    return MessageBubble(message: message, isMe: message.senderId == 'user1');
+                    return MessageBubble(message: message, isMe: message.senderId == myId);
                   },
                 );
               },

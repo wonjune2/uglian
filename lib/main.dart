@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uglian/features/chat/presentation/screens/chat_screen.dart';
+import 'package:uglian/core/widgets/auth_gate.dart';
 import 'package:uglian/firebase_options.dart';
 
 void main() async {
@@ -19,6 +19,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: ChatScreen());
+    return const MaterialApp(home: AuthGate());
   }
 }
